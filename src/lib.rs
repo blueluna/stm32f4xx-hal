@@ -17,13 +17,11 @@ pub use stm32f4::stm32f401 as stm32;
 #[cfg(feature = "stm32f407")]
 pub use stm32f4::stm32f407 as stm32;
 
-<<<<<<< HEAD
 #[cfg(feature = "stm32f411")]
 pub use stm32f4::stm32f411 as stm32;
-=======
+
 #[cfg(feature = "stm32f412")]
 pub use stm32f4::stm32f412 as stm32;
->>>>>>> 291cdbee32effff0399358f5483dc87114a79bd7
 
 #[cfg(feature = "stm32f429")]
 pub use stm32f4::stm32f429 as stm32;

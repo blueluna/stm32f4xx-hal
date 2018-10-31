@@ -21,11 +21,7 @@ use stm32::{RCC, UART4, UART5, UART7, UART8, USART1, USART2, USART3, USART6};
 #[cfg(any(feature = "stm32f407", feature = "stm32f429"))]
 use stm32::usart6::cr2::STOPW;
 
-<<<<<<< HEAD
-#[cfg(any(feature = "stm32f401", feature = "stm32f411"))]
-=======
-#[cfg(any(feature = "stm32f401", feature = "stm32f412"))]
->>>>>>> 291cdbee32effff0399358f5483dc87114a79bd7
+#[cfg(any(feature = "stm32f401", feature = "stm32f411", feature = "stm32f412"))]
 use stm32::usart1::cr2::STOPW;
 
 use gpio::gpioa::{PA10, PA2, PA3, PA9};
