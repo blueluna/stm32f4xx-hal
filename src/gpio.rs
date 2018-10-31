@@ -125,6 +125,17 @@ macro_rules! gpio {
                 }
             }
 
+            impl<MODE> InputPin for $PXx<Output<MODE>> {
+                fn is_high(&self) -> bool {
+                    !self.is_low()
+                }
+
+                fn is_low(&self) -> bool {
+                    // NOTE(unsafe) atomic read with no side effects
+                    unsafe { (*$GPIOX::ptr()).idr.read().bits() & (1 << self.i) == 0 }
+                }
+            }
+
             impl<MODE> InputPin for $PXx<Input<MODE>> {
                 fn is_high(&self) -> bool {
                     !self.is_low()
@@ -457,6 +468,17 @@ macro_rules! gpio {
                     }
                 }
 
+                impl<MODE> InputPin for $PXi<Output<MODE>> {
+                    fn is_high(&self) -> bool {
+                        !self.is_low()
+                    }
+
+                    fn is_low(&self) -> bool {
+                        // NOTE(unsafe) atomic read with no side effects
+                        unsafe { (*$GPIOX::ptr()).idr.read().bits() & (1 << $i) == 0 }
+                    }
+                }
+
                 impl<MODE> $PXi<Input<MODE>> {
                     /// Erases the pin number from the type
                     ///
@@ -587,7 +609,7 @@ gpio!(GPIOE, gpioe, gpioeen, PE, [
     PE15: (pe15, 15, Input<Floating>),
 ]);
 
-#[cfg(any(feature = "stm32f407", feature = "stm32f429"))]
+#[cfg(any(feature = "stm32f407", feature = "stm32f412", feature = "stm32f429"))]
 gpio!(GPIOF, gpiof, gpiofen, PF, [
     PF0: (pf0, 0, Input<Floating>),
     PF1: (pf1, 1, Input<Floating>),
@@ -607,7 +629,7 @@ gpio!(GPIOF, gpiof, gpiofen, PF, [
     PF15: (pf15, 15, Input<Floating>),
 ]);
 
-#[cfg(any(feature = "stm32f407", feature = "stm32f429"))]
+#[cfg(any(feature = "stm32f407", feature = "stm32f412", feature = "stm32f429"))]
 gpio!(GPIOG, gpiog, gpiogen, PG, [
     PG0: (pg0, 0, Input<Floating>),
     PG1: (pg1, 1, Input<Floating>),
@@ -627,7 +649,7 @@ gpio!(GPIOG, gpiog, gpiogen, PG, [
     PG15: (pg15, 15, Input<Floating>),
 ]);
 
-#[cfg(any(feature = "stm32f407", feature = "stm32f429"))]
+#[cfg(any(feature = "stm32f407", feature = "stm32f412", feature = "stm32f429"))]
 gpio!(GPIOH, gpioh, gpiohen, PH, [
     PH0: (ph0, 0, Input<Floating>),
     PH1: (ph1, 1, Input<Floating>),

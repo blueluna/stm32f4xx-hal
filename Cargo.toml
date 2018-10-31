@@ -47,7 +47,11 @@ default = ["rt"]
 rt = ["stm32f4/rt"]
 stm32f401 = ["stm32f4/stm32f401"]
 stm32f407 = ["stm32f4/stm32f407"]
+<<<<<<< HEAD
 stm32f411 = ["stm32f4/stm32f411"]
+=======
+stm32f412 = ["stm32f4/stm32f412"]
+>>>>>>> 291cdbee32effff0399358f5483dc87114a79bd7
 stm32f429 = ["stm32f4/stm32f429"]
 
 [profile.dev]

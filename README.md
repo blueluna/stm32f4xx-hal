@@ -8,7 +8,11 @@ support crates. Currently supported configurations are:
 
 * stm32f401
 * stm32f407
+<<<<<<< HEAD
 * stm32f411
+=======
+* stm32f412
+>>>>>>> 291cdbee32effff0399358f5483dc87114a79bd7
 * stm32f429
 
 The idea behind this crate is to gloss over the slight differences in the
