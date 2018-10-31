@@ -129,6 +129,9 @@ impl CFGR {
             #[cfg(feature = "stm32f407")]
             assert!(sysclk <= 168_000_000 && sysclk >= 24_000_000);
 
+            #[cfg(feature = "stm32f411")]
+            assert!(sysclk <= 100_000_000 && sysclk >= 24_000_000);
+
             #[cfg(feature = "stm32f429")]
             assert!(sysclk <= 180_000_000 && sysclk >= 24_000_000);
 
